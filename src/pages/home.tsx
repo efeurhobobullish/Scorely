@@ -1,47 +1,105 @@
+import { ArrowRight, BarChart3, Clock, ShieldCheck } from "lucide-react";
 import ModeToggle from "@/components/ui/mode-toggle";
-import { Pattern } from "@/components/ui";
-import { libraries } from "@/constants/data";
-import { Github, ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <>
-      <Pattern>
-        <div className="h-[100dvh] relative z-10 center flex-col gap-10 text-center layout">
-          <div className="center gap-2">
-            <a
-              href="https://github.com/learnwithjacksun/my-react-template"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-line rounded-full bg-secondary/70 px-4 py-2 center gap-20 inline-flex "
-            >
-              <div className="center gap-2">
-                <Github size={18} className="text-main/70" />
-                <p className="text-sm">Use Template</p>
-              </div>
-              <ArrowRight size={20} className="text-main/70" />
-            </a>
-          </div>
-          <div className="space-y-2">
-            <h1 className="text-6xl md:leading-[80px] leading-[60px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-main to-main/70 dark:to-main/50">
-              My Reactjs Template
-            </h1>
-            <p className="text-muted text-sm">With typescript.</p>
-          </div>
+    <div className="min-h-[100dvh] flex flex-col justify-center layout text-center gap-12">
+      
+      {/* Header */}
+      <header className="flex items-center justify-between mb-6">
+        <h1 className="text-xl font-bold text-primary">Scorely</h1>
+        <ModeToggle />
+      </header>
 
-          <ul className="center flex-wrap gap-2">
-            {libraries.map((library) => (
-              <li
-                key={library}
-                className="text-sm text-muted dark:bg-secondary border border-line rounded-full px-4 py-2"
-              >
-                {library}
-              </li>
-            ))}
-          </ul>
-          <ModeToggle />
-        </div>
-      </Pattern>
-    </>
+      {/* Hero */}
+      <section className="space-y-4">
+        <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+          Smart <span className="text-primary">Football Predictions</span>
+        </h2>
+        <p className="text-muted text-sm md:text-base">
+          Accurate match insights, premium tips, and automated prediction bots.
+        </p>
+      </section>
+
+      {/* Services */}
+      <section className="grid grid-cols-2 gap-4 mt-6">
+        <ServiceCard
+          icon={<Clock />}
+          title="Live Updates"
+          desc="Real-time match data"
+        />
+        <ServiceCard
+          icon={<BarChart3 />}
+          title="Predictions"
+          desc="Data-driven analysis"
+        />
+        <ServiceCard
+          icon={<ArrowRight />}
+          title="Fast Access"
+          desc="Quick & simple tips"
+        />
+        <ServiceCard
+          icon={<ShieldCheck />}
+          title="Trusted"
+          desc="Consistent accuracy"
+        />
+      </section>
+
+      {/* CTA */}
+      <section className="space-y-4 mt-8">
+        <a
+          href="/auth/register"
+          className="block w-full rounded-full bg-primary text-white py-3 font-semibold hover:opacity-90 transition"
+        >
+          Get Started
+        </a>
+        <a
+          href="/auth/login"
+          className="text-primary text-sm font-medium hover:underline"
+        >
+          Already have an account? Sign in
+        </a>
+      </section>
+
+      {/* Trust stats */}
+      <section className="flex justify-center gap-10 mt-10 text-sm">
+        <Stat value="95%" label="Accuracy" />
+        <Stat value="24/7" label="Bots Online" />
+        <Stat value="10+" label="Leagues" />
+      </section>
+    </div>
+  );
+}
+
+/* =====================
+   Small Components
+   ===================== */
+
+function ServiceCard({
+  icon,
+  title,
+  desc,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+}) {
+  return (
+    <div className="bg-white rounded-2xl p-5 shadow-sm border border-line hover:shadow-md transition">
+      <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+        {icon}
+      </div>
+      <h3 className="font-semibold text-sm">{title}</h3>
+      <p className="text-xs text-muted mt-1">{desc}</p>
+    </div>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="text-center">
+      <p className="font-bold text-lg">{value}</p>
+      <p className="text-muted text-xs">{label}</p>
+    </div>
   );
 }
