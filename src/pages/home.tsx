@@ -1,7 +1,22 @@
+import { useEffect, useState } from "react";
 import { ArrowRight, BarChart3, Clock, ShieldCheck } from "lucide-react";
 import ModeToggle from "@/components/ui/mode-toggle";
 
 export default function Home() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 2500); // splash duration
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (showSplash) {
+    return <SplashScreen />;
+  }
+
   return (
     <div className="min-h-[100dvh] flex flex-col justify-center layout text-center gap-12">
       
@@ -23,26 +38,10 @@ export default function Home() {
 
       {/* Services */}
       <section className="grid grid-cols-2 gap-4 mt-6">
-        <ServiceCard
-          icon={<Clock />}
-          title="Live Updates"
-          desc="Real-time match data"
-        />
-        <ServiceCard
-          icon={<BarChart3 />}
-          title="Predictions"
-          desc="Data-driven analysis"
-        />
-        <ServiceCard
-          icon={<ArrowRight />}
-          title="Fast Access"
-          desc="Quick & simple tips"
-        />
-        <ServiceCard
-          icon={<ShieldCheck />}
-          title="Trusted"
-          desc="Consistent accuracy"
-        />
+        <ServiceCard icon={<Clock />} title="Live Updates" desc="Real-time data" />
+        <ServiceCard icon={<BarChart3 />} title="Predictions" desc="Data-driven" />
+        <ServiceCard icon={<ArrowRight />} title="Fast Access" desc="Quick tips" />
+        <ServiceCard icon={<ShieldCheck />} title="Trusted" desc="Reliable results" />
       </section>
 
       {/* CTA */}
@@ -61,12 +60,33 @@ export default function Home() {
         </a>
       </section>
 
-      {/* Trust stats */}
+      {/* Stats */}
       <section className="flex justify-center gap-10 mt-10 text-sm">
         <Stat value="95%" label="Accuracy" />
         <Stat value="24/7" label="Bots Online" />
         <Stat value="10+" label="Leagues" />
       </section>
+    </div>
+  );
+}
+
+/* =====================
+   Splash Screen
+   ===================== */
+
+function SplashScreen() {
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-primary text-white z-50">
+      <div className="w-24 h-24 rounded-2xl bg-white flex items-center justify-center mb-6 animate-scale-in">
+        <span className="text-primary text-3xl font-bold">S</span>
+      </div>
+
+      <h1 className="text-2xl font-semibold tracking-wide">Scorely</h1>
+      <p className="text-sm opacity-80 mt-1">Smart Football Predictions</p>
+
+      <div className="mt-10 w-32 h-1 bg-white/30 rounded-full overflow-hidden">
+        <div className="h-full w-full bg-white animate-loading-bar" />
+      </div>
     </div>
   );
 }
