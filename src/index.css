@@ -4,45 +4,61 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* =========================
+   LIGHT THEME (WHITE + BLUE)
+   ========================= */
 :root {
-  --background: #ffffff;
-  --secondary: #f9f9f9;
-  --foreground: #f5f5f5;
-  --main: #444;
-  --muted: #999999;
-  --primary: #222;
-  --line: #f1f1f1;
+  --background: #ffffff;        /* page background */
+  --secondary: #f8fafc;         /* cards / sections */
+  --foreground: #f1f5f9;        /* subtle surfaces */
+  --main: #0f172a;              /* main text (dark blue/gray) */
+  --muted: #64748b;             /* muted text */
+  --primary: #2563ea;           /* Scorely blue */
+  --line: #e5e7eb;              /* borders */
 }
 
+/* =========================
+   DARK THEME (OPTIONAL)
+   ========================= */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #212121;
-  --main: #fefefe;
-  --secondary: #121212;
-  --muted: #999999;
-  --line: #212121;
-  --primary: #fefefe;
+  --background: #020617;
+  --secondary: #020617;
+  --foreground: #020617;
+  --main: #f8fafc;
+  --muted: #94a3b8;
+  --primary: #2563ea;           /* keep brand blue */
+  --line: #1e293b;
 }
 
+/* =========================
+   TAILWIND THEME MAPPING
+   ========================= */
 @theme inline {
   --font-sans: "Plus Jakarta Sans", sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-secondary: var(--secondary);
   --color-main: var(--main);
   --color-muted: var(--muted);
-  --color-line: var(--line);
   --color-primary: var(--primary);
+  --color-line: var(--line);
 }
 
-*{
-  @apply outline-none
+/* =========================
+   GLOBAL STYLES
+   ========================= */
+* {
+  @apply outline-none;
 }
 
 body {
- @apply bg-background text-main font-sans;
+  @apply bg-background text-main font-sans;
 }
 
+/* =========================
+   LAYOUT HELPERS
+   ========================= */
 .main {
   @apply max-w-[90%] 2xl:max-w-[1280px] mx-auto;
 }
@@ -55,15 +71,25 @@ body {
   @apply flex items-center justify-center;
 }
 
+/* =========================
+   BUTTONS
+   ========================= */
 button,
 .btn {
   @apply cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50;
 }
 
 .btn-primary {
-  @apply text-white dark:text-[#171717] bg-primary font-semibold;
+  @apply bg-primary text-white font-semibold hover:opacity-90;
 }
 
+.btn-outline {
+  @apply border border-line text-main hover:bg-secondary;
+}
+
+/* =========================
+   SCROLLBAR
+   ========================= */
 .hide-scrollbar::-webkit-scrollbar {
   @apply hidden;
 }
@@ -71,4 +97,3 @@ button,
 .hide-scrollbar::-webkit-scrollbar-thumb {
   @apply hidden;
 }
-
