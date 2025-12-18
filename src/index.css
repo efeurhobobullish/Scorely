@@ -1,69 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
 
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* =========================
-   LIGHT THEME (WHITE + BLUE)
-   ========================= */
 :root {
-  --background: #ffffff;        /* page background */
-  --secondary: #f8fafc;         /* cards / sections */
-  --foreground: #f1f5f9;        /* subtle surfaces */
-  --main: #0f172a;              /* main text (dark blue/gray) */
-  --muted: #64748b;             /* muted text */
-  --primary: #2563ea;           /* Scorely blue */
-  --line: #e5e7eb;              /* borders */
+  --background: #ffffff;
+  --secondary: #f9f9f9;
+  --foreground: #f5f5f5;
+  --main: #171717;
+  --primary-2: #03301D;
+  --muted: #777;
+  --primary: #86EE02;
+  --line: #f1f1f1;
 }
 
-/* =========================
-   DARK THEME (OPTIONAL)
-   ========================= */
 .dark {
-  --background: #020617;
-  --secondary: #020617;
-  --foreground: #020617;
-  --main: #f8fafc;
-  --muted: #94a3b8;
-  --primary: #2563ea;           /* keep brand blue */
-  --line: #1e293b;
+  --background: #0a0a0a;
+  --foreground: #212121;
+  --main: #fefefe;
+  --secondary: #121212;
+  --primary-2: #fefefe;
+  --muted: #999999;
+  --line: #212121;
+  --primary: #86EE02;
 }
 
-/* =========================
-   TAILWIND THEME MAPPING
-   ========================= */
 @theme inline {
   --font-sans: "Plus Jakarta Sans", sans-serif;
-
+  --font-space: "Space Grotesk", sans-serif;
+  --font-mono: "Geist Mono", monospace;
+  --font-geist: "Geist", sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+  --font-raleway: "Raleway", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-secondary: var(--secondary);
   --color-main: var(--main);
   --color-muted: var(--muted);
-  --color-primary: var(--primary);
   --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-2: var(--primary-2);
+  --color-electric-blue: #3B82F6;
+  --color-neon-cyan: #00FFFF;
+  --color-futuristic-purple: #A855F7;
+  --color-futuristic-magenta: #EC4899;
+  --color-hot-pink: #FF10F0;
+  --color-violet: #8B5CF6;
+  --color-gold: #FFD700;
+  --color-dark-navy: #0D1117;
+  --color-dark-gradient: #0A0A0F;
 }
 
-/* =========================
-   GLOBAL STYLES
-   ========================= */
-* {
-  @apply outline-none;
+*{
+  @apply outline-none
 }
 
 body {
-  @apply bg-background text-main font-sans;
+ @apply dark:bg-background bg-secondary text-main font-raleway;
 }
 
-/* =========================
-   LAYOUT HELPERS
-   ========================= */
 .main {
   @apply max-w-[90%] 2xl:max-w-[1280px] mx-auto;
 }
 
-.layout {
+.container {
   @apply max-w-[90%] md:max-w-[700px] mx-auto;
 }
 
@@ -71,25 +72,15 @@ body {
   @apply flex items-center justify-center;
 }
 
-/* =========================
-   BUTTONS
-   ========================= */
 button,
 .btn {
-  @apply cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50;
+  @apply cursor-pointer font-semibold font-space flex items-center justify-center gap-2 disabled:opacity-50;
 }
 
 .btn-primary {
-  @apply bg-primary text-white font-semibold hover:opacity-90;
+  @apply text-[#063b1e] bg-primary ;
 }
 
-.btn-outline {
-  @apply border border-line text-main hover:bg-secondary;
-}
-
-/* =========================
-   SCROLLBAR
-   ========================= */
 .hide-scrollbar::-webkit-scrollbar {
   @apply hidden;
 }
@@ -98,30 +89,60 @@ button,
   @apply hidden;
 }
 
-@keyframes scaleIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+/* Futuristic glow effects */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.2);
 }
 
-.animate-scale-in {
-  animation: scaleIn 0.6s ease-out forwards;
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.2);
 }
 
-@keyframes loadingBar {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.glow-purple {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 0 0 40px rgba(168, 85, 247, 0.2);
 }
 
-.animate-loading-bar {
-  animation: loadingBar 2s ease-in-out forwards;
+.glow-pink {
+  box-shadow: 0 0 20px rgba(255, 16, 240, 0.4), 0 0 40px rgba(255, 16, 240, 0.3);
+}
+.glow-green {
+  box-shadow: 0 0 20px rgba(64, 255, 16, 0.4) 0 40px rgba(255, 16, 240, 0.3);
+}
+
+.glow-violet {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+.glow-gold {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.3);
+}
+
+/* Gradient text utilities */
+.gradient-pink-violet-gold {
+  background: linear-gradient(135deg, #FF10F0 0%, #8B5CF6 50%, #FFD700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-button {
+  background: linear-gradient(135deg, #FF10F0 0%, #8B5CF6 50%, #FFD700 100%);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
