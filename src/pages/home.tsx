@@ -52,13 +52,13 @@ export default function Home() {
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-            <Link to="/auth/register">
+            <Link to="/signup">
               <button className="btn-primary min-w-[180px] h-12 rounded-full text-white font-medium shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all">
                 Get Started Free
               </button>
             </Link>
 
-            <Link to="/predictions">
+            <Link to="/login">
               <button className="min-w-[180px] h-12 rounded-full border border-line bg-background hover:bg-secondary transition flex items-center justify-center gap-2 text-main">
                 View Today's Tips
                 <ArrowRight size={16} />
