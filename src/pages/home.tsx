@@ -6,8 +6,7 @@ import {
   Zap, 
   Check, 
   ArrowRight, 
-  Trophy,
-  TrendingUp 
+  Trophy 
 } from "lucide-react";
 import CountUp from "react-countup";
 
