@@ -109,7 +109,7 @@ export default function Header() {
               {/* Auth */}
               <div className="mt-auto space-y-4 pb-8">
                 <Link
-                  to="/auth/login"
+                  to="/login"
                   onClick={() => setIsOpen(false)}
                   className="w-full h-12 rounded-full border border-line flex items-center justify-center text-main"
                 >
@@ -117,7 +117,7 @@ export default function Header() {
                 </Link>
 
                 <Link
-                  to="/auth/register"
+                  to="/signup"
                   onClick={() => setIsOpen(false)}
                   className="w-full h-12 rounded-full bg-primary text-white flex items-center justify-center font-semibold"
                 >
