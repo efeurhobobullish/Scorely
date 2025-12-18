@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import logo from "@/assets/vite.svg"; // your Scorely logo
+import logo from "@/assets/react.svg"; // your Scorely logo
 
 export default function Splash() {
   const navigate = useNavigate();
